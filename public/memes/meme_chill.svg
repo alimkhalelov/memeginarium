@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 960" width="100%" height="100%">
+  <rect width="540" height="960" fill="#1e1003"/>
+  
+  <!-- Subtle flat geometric accent -->
+  <rect x="0" y="0" width="540" height="12" fill="#d97706"/>
+  <rect x="36" y="60" width="8" height="48" fill="#d97706"/>
+  
+  <!-- Top Meme Meta -->
+  <text x="56" y="92" fill="#d97706" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="700" letter-spacing="2">MEMEGINARIUM 2026</text>
+  
+  <!-- Center Visual Motif -->
+  <g transform="translate(270, 400)">
+    <circle r="160" fill="#d97706" fill-opacity="0.1"/>
+    <circle r="120" fill="#d97706" fill-opacity="0.2"/>
+    <text text-anchor="middle" dominant-baseline="central" font-size="110">🐕🧥</text>
+  </g>
+  
+  <!-- Title -->
+  <text x="40" y="660" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-size="38" font-weight="900" letter-spacing="-0.5">CHILL GUY</text>
+  
+  <!-- Quote -->
+  <text x="40" y="715" fill="#e2e8f0" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="500">«Я просто чилл гай, мне всё равно»</text>
+  
+  <!-- Subtitle -->
+  <text x="40" y="765" fill="#d97706" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="600">Пёс в коричневом свитере</text>
+  
+  <!-- Tags -->
+  <g transform="translate(40, 840)">
+    <text x="0" y="0" fill="#64748b" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="600">#пофигизм</text><text x="150" y="0" fill="#64748b" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="600">#спокойствие</text><text x="300" y="0" fill="#64748b" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="600">#свитер</text>
+  </g>
+</svg>
