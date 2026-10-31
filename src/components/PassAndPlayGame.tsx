@@ -31,19 +31,30 @@ export const PassAndPlayGame: React.FC<PassAndPlayGameProps> = ({
 
   const storyteller = gameState.players[gameState.storytellerIndex];
 
+  // Helper to determine the underlying phase when in pass-and-play handoff
+  const getEffectivePhase = () => {
+    if (gameState.phase !== "pass_veil") return gameState.phase;
+    if (!gameState.clue) return "storyteller_turn";
+    if (gameState.playedCards.length < gameState.players.length) return "matching_turn";
+    if (gameState.lastRoundResult === undefined) return "voting";
+    return "scoring";
+  };
+
+  const effectivePhase = getEffectivePhase();
+
   // Helper to determine who is currently holding the phone
   const getCurrentActivePlayer = () => {
-    if (gameState.phase === "storyteller_turn" || (gameState.phase === "pass_veil" && !gameState.clue)) {
+    if (effectivePhase === "storyteller_turn") {
       return storyteller;
     }
-    if (gameState.phase === "matching_turn" || (gameState.phase === "pass_veil" && gameState.playedCards.length < gameState.players.length)) {
+    if (effectivePhase === "matching_turn") {
       return (
         gameState.players.find(
           (p, i) => i !== gameState.storytellerIndex && !p.pickedCard
         ) || gameState.players[0]
       );
     }
-    if (gameState.phase === "voting" || (gameState.phase === "pass_veil" && gameState.lastRoundResult === undefined)) {
+    if (effectivePhase === "voting") {
       return (
         gameState.players.find(
           (p, i) => i !== gameState.storytellerIndex && !p.votedCardId
@@ -101,7 +112,7 @@ export const PassAndPlayGame: React.FC<PassAndPlayGameProps> = ({
   };
 
   // If veil is active (Privacy screen between players)
-  if (isVeiled && gameState.phase !== "scoring" && gameState.phase !== "game_over") {
+  if (isVeiled && effectivePhase !== "scoring" && effectivePhase !== "game_over") {
     return (
       <PrivacyVeil
         targetPlayerName={gameState.veilTargetPlayerName || activePlayer.name}
@@ -133,7 +144,7 @@ export const PassAndPlayGame: React.FC<PassAndPlayGameProps> = ({
       {/* Main Content Area */}
       <main className="flex-1 flex flex-col justify-center max-w-5xl mx-auto w-full my-auto">
         {/* PHASE 1: Storyteller's Turn */}
-        {gameState.phase === "storyteller_turn" || (gameState.phase === "pass_veil" && !gameState.clue) ? (
+        {effectivePhase === "storyteller_turn" ? (
           <div className="space-y-6">
             <div className="text-center space-y-1">
               <h1 className="text-white text-3xl sm:text-4xl font-extrabold tracking-tight">
@@ -183,7 +194,7 @@ export const PassAndPlayGame: React.FC<PassAndPlayGameProps> = ({
         ) : null}
 
         {/* PHASE 2: Other Players Matching Cards */}
-        {gameState.phase === "matching_turn" ? (
+        {effectivePhase === "matching_turn" ? (
           <div className="space-y-6">
             <div className="text-center space-y-2">
               <span className="text-zinc-400 text-base font-semibold uppercase tracking-wider block">
@@ -224,7 +235,7 @@ export const PassAndPlayGame: React.FC<PassAndPlayGameProps> = ({
         ) : null}
 
         {/* PHASE 3: Voting on Table Cards */}
-        {gameState.phase === "voting" ? (
+        {effectivePhase === "voting" ? (
           <div className="space-y-6">
             <div className="text-center space-y-2">
               <span className="text-zinc-400 text-base font-semibold uppercase tracking-wider block">
@@ -270,7 +281,7 @@ export const PassAndPlayGame: React.FC<PassAndPlayGameProps> = ({
         ) : null}
 
         {/* PHASE 4: Round Results & Scoring Breakdown */}
-        {gameState.phase === "scoring" && gameState.lastRoundResult && (
+        {effectivePhase === "scoring" && gameState.lastRoundResult && (
           <div className="space-y-8 animate-fade-appear">
             <div className="text-center space-y-2">
               <span className="text-zinc-400 text-base font-semibold uppercase tracking-wider block">
@@ -340,7 +351,7 @@ export const PassAndPlayGame: React.FC<PassAndPlayGameProps> = ({
         )}
 
         {/* PHASE 5: Game Over */}
-        {gameState.phase === "game_over" && (
+        {effectivePhase === "game_over" && (
           <div className="text-center max-w-lg mx-auto w-full space-y-6 animate-fade-appear">
             <span className="text-zinc-400 text-base font-semibold uppercase tracking-wider block">
               Игра окончена

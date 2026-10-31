@@ -147,12 +147,13 @@ export function submitPlayerCard(
   if (allPicked) {
     // Shuffle played cards for voting table
     const shuffledCards = shuffleArray(updatedPlayedCards);
+    const firstVoter = updatedPlayers.find((_, idx) => idx !== state.storytellerIndex);
     return {
       ...state,
       players: updatedPlayers,
       playedCards: shuffledCards,
       phase: state.mode === "pass_and_play" ? "pass_veil" : "voting",
-      veilTargetPlayerName: state.players[0].name,
+      veilTargetPlayerName: firstVoter ? firstVoter.name : state.players[0].name,
     };
   }
 

@@ -142,4 +142,25 @@ describe("Imaginarium Game Engine", () => {
     expect(nextRound.players[2].hand).toHaveLength(HAND_SIZE);
     expect(nextRound.playedCards).toHaveLength(0);
   });
+
+  it("handles complete pass-and-play handoff loop targeting correct players", () => {
+    let state = initializeMatch(["Alice", "Bob", "Charlie"], mockDeck, 20, "pass_and_play");
+    expect(state.phase).toBe("pass_veil");
+    expect(state.veilTargetPlayerName).toBe("Alice");
+
+    // Alice (storyteller) sets clue
+    state = setStorytellerClue(state, state.players[0].hand[0].id, "Воздухан");
+    expect(state.phase).toBe("pass_veil");
+    expect(state.veilTargetPlayerName).toBe("Bob");
+
+    // Bob picks card
+    state = submitPlayerCard(state, state.players[1].id, state.players[1].hand[0].id);
+    expect(state.phase).toBe("pass_veil");
+    expect(state.veilTargetPlayerName).toBe("Charlie");
+
+    // Charlie picks card -> transitions to voting for Bob (first voter)
+    state = submitPlayerCard(state, state.players[2].id, state.players[2].hand[0].id);
+    expect(state.phase).toBe("pass_veil");
+    expect(state.veilTargetPlayerName).toBe("Bob"); // Non-storyteller voter!
+  });
 });
