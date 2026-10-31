@@ -40,3 +40,9 @@
   Summary: Progressive disclosure animation appear for interactive controls; surgical justification for every UI element & text (condense, convert to borderless icon/button, or hide in 3 vertical dots menu `⋮`).
   Status: Active
   Origin: "...progressive disclosure animation appear, каждый UI элемент и текст нужно обосновать почему он нужен вообще насколько критично или можно избавиться, и если он есть то может как то текст сократить, или вообще в одну кнопку-иконку без подложки сделать, или вообще в настройки спрятать, настройки это 3 точки вертикальные"
+
+- [INTENT-008] [2026-10-31 14:25] [Category: Content]
+  Summary: Core meme pack strictly curated from hyper-fresh 2026 CIS / TikTok trends (e.g. Убери телефон, Воздухан, 67, Антон Чагур, Телифон, Брдыщ/Советский брейнрот, Мага сияй, Итальянский брейнрот-рейв, Chill Guy, Квадроберы). No obsolete or tired legacy memes.
+  Status: Active
+  Origin: "еще поищи актуальные мемы по типу антон чагур, воздухан, 67, убери телефон, телифон, еще поищи их прям больше и нужны актуальные, а не старые"
+
