@@ -82,9 +82,6 @@ export const Lobby: React.FC<LobbyProps> = ({
               <h1 className="text-white text-4xl sm:text-5xl font-black tracking-tight">
                 Имаджинариум для мемов
               </h1>
-              <p className="text-zinc-400 text-lg">
-                Свежие СНГ-тренды осени 2026 в вертикальном формате
-              </p>
             </div>
 
             <div className="space-y-3 pt-4">
@@ -271,11 +268,6 @@ export const Lobby: React.FC<LobbyProps> = ({
           </div>
         )}
       </main>
-
-      {/* Footer */}
-      <footer className="text-center text-zinc-600 text-base max-w-xl mx-auto w-full pt-4">
-        Минимальный размер шрифта 16px • Без теней и обводок
-      </footer>
 
       {/* Pack Modal */}
       <PackModal
