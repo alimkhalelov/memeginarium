@@ -2,6 +2,10 @@
 
 > Классический Imaginarium / Dixit на вертикальных карточках с актуальными СНГ-мемами 2026 года.
 
+🔗 **Прямой сайт игры (Vercel)**: **[https://memeginarium.vercel.app](https://memeginarium.vercel.app)**  
+🔗 **Зеркало на GitHub Pages**: **[https://alimkhalelov.github.io/memeginarium/](https://alimkhalelov.github.io/memeginarium/)**  
+📦 **Репозиторий**: **[https://github.com/alimkhalelov/memeginarium](https://github.com/alimkhalelov/memeginarium)**
+
 ---
 
 ## 🎮 Режимы игры
