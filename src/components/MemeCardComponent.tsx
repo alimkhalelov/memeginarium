@@ -62,12 +62,18 @@ export const MemeCardComponent: React.FC<MemeCardProps> = ({
             </div>
           )}
 
-          {/* Optional status label */}
-          {label && (
-            <div className="absolute bottom-3 left-3 right-3 bg-black/80 text-white font-semibold px-3 py-2 rounded-xl text-base text-center">
-              {label}
-            </div>
-          )}
+          {/* Title bar on bottom of card */}
+          <div className="absolute bottom-0 inset-x-0 p-3 bg-gradient-to-t from-black/95 via-black/60 to-transparent">
+            {label ? (
+              <div className="bg-white text-black font-bold px-2 py-1 rounded-lg text-base text-center">
+                {label}
+              </div>
+            ) : (
+              <span className="text-white font-bold text-base leading-tight block truncate">
+                {card.title}
+              </span>
+            )}
+          </div>
         </>
       ) : (
         /* Hidden card back for Dixit */
